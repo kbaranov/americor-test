@@ -22,6 +22,10 @@ use Yii;
  *
  * @property Customer $customer
  * @property User $user
+ * @property Call $call
+ * @property Fax $fax
+ * @property Sms $sms
+ * @property Task $task
  */
 class History extends \yii\db\ActiveRecord
 {
@@ -181,5 +185,37 @@ class History extends \yii\db\ActiveRecord
     {
         $detail = json_decode($this->detail);
         return isset($detail->data->{$attribute}) ? $detail->data->{$attribute} : null;
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCall()
+    {
+        return $this->hasOne(Call::className(), ['id' => 'object_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFax()
+    {
+        return $this->hasOne(Fax::className(), ['id' => 'object_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSms()
+    {
+        return $this->hasOne(Sms::className(), ['id' => 'object_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTask()
+    {
+        return $this->hasOne(Task::className(), ['id' => 'object_id']);
     }
 }

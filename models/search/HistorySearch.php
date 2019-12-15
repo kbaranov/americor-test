@@ -91,15 +91,6 @@ class HistorySearch extends History
             $query->where('0=1');
             return $dataProvider;
         }
-        $query->addSelect('history.*');
-        $query->with([
-            'customer',
-            'user',
-            'sms',
-            'task',
-            'call',
-            'fax',
-        ]);
 
         $query->andFilterWhere([
             'history.customer_id' => $this->customer_id,

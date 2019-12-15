@@ -1,5 +1,6 @@
 <?php
 
+$_ENV = array_merge($_ENV, require(__DIR__ . '/.env'));
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
